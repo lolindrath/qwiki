@@ -1,0 +1,24 @@
+<h2>History for <%= h @page.name %></h2>
+<% form_tag '/history/diff', :method => :get do -%>
+<%= hidden_field_tag 'id', @page.id %>
+<table>
+  <thead>
+    <tr><th>&nbsp;</th><th>&nbsp;</th><th>Version</th><th>Changed Fields</th></tr>
+  </thead>
+  <tbody>
+<% @page_versions.reverse.group_by(&:date).each do |date, versions| %>
+  <tr>
+  <td colspan="4"><p><b><%= date %></b></p></td>
+  </tr>
+  <% versions.each do |v| %>
+    <tr>
+        <td><%= radio_button_tag 'v1', v.number  %></td><td><%= radio_button_tag 'v2', v.number %></td>
+        <td><%= link_to v.number.to_s, :controller => :pages, :action => :show, :id => @page.id, :version => v.number -%></li></td>
+        <td><%= v.changes.keys.join(', ') if !v.changes.nil? %></td>
+    </tr>
+  <% end %>
+<% end %>
+</tbody>
+</table>
+<%= submit_tag 'Run Diff' -%>
+<% end -%>

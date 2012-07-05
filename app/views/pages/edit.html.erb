@@ -1,0 +1,37 @@
+<h3>Editing Page: <%= h @page.name -%></h3>
+
+<% form_for(@page, :html => { :multipart => true }) do |f| %>
+  <%= f.error_messages %>
+<%= link_to 'Markdown', '/markdown-reference/index.html', :popup => ['markdown_reference', 'height=400,width=600,scrollbars=1'] %>
+  <table>
+    <tr>
+      <td class="span-9" style="vertical-align: top;">
+        <div id="wmd-button-bar"></div>
+        <%= f.text_area :body, :id => 'wmd-input' %><br />
+        <%= f.label :edit_summary %><br />
+        <%= f.text_field :edit_summary %><br />
+      </td>
+      <td class="span-8"  style="vertical-align: top;">
+        <div id="wmd-preview" class="wikistyle"></div>
+      </td>
+    </tr>
+  </table>
+
+  <p>Pending Attachments
+    <input id="newfile_data" type="file" />
+  <div id="attachment_list"><ul id="pending_files"><li></li></ul></div>
+
+  </p>
+  <script type="text/javascript">
+    var multi_selector = new MultiSelector($('pending_files'), <%= 1 %>);
+    multi_selector.addElement($('newfile_data'));
+  </script>
+  <p>
+    Attached Files:<div id="attachment_list"><%= render :partial => "attachment", :collection => @page.assets %></div>
+  </p>
+  <p>
+    <%= f.submit "Update" %> | <%= link_to 'Cancel', pages_path %>
+  </p>
+<% end %>
+
+

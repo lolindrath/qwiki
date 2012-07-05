@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+
+    <link rel="icon" type="image/png" href="/drago-80px.png" />
+
+    <%= stylesheet_link_tag 'default', :media => 'screen' %>
+    <%= stylesheet_link_tag 'screen', :media => 'screen' %>
+    <%= stylesheet_link_tag 'print', :media => 'print' %>
+    <%= stylesheet_link_tag 'wmd', :media => 'screen' %>
+    <!--[if IE]>
+    <%= stylesheet_link_tag 'ie', :media => 'screen' %>
+    <![endif]-->
+
+    <%= javascript_include_tag 'diff_match_patch' %>
+    <%= javascript_include_tag :defaults %>
+    <%= javascript_include_tag  "prototype", "application",  "effects", "controls", "multifile" %>
+    <%= javascript_include_tag 'showdown' %>
+
+    <title>QWiki - <%= @page_title -%> [<%= RAILS_ENV -%>]</title>
+  </head>
+<body>
+  <div class='container'>
+    <div id="header" class="span-24 last">
+      <a href="/pages/show/HomePage"><h1 id="book_haven"><img src="/images/header.gif" alt="Book header image" id="header-image" /></h1></a>
+    </div>
+    <% if logged_in? %>
+      <p>Welcome <%= h current_user.login %> | <%= link_to 'Logout', logout_path %></p>
+    <% else %>
+      <p><%= link_to 'Login', login_path %> | <%= link_to 'Signup', signup_path %></p>
+    <% end %>
+    <hr />

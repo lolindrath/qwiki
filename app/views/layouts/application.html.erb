@@ -1,0 +1,24 @@
+<%= render :partial => 'layouts/header' %>
+    <div class="span-17 colborder" id="content">
+      <% if flash[:notice] %>
+        <div class="notice"><%= h(flash[:notice]) -%></div>
+      <% end %>
+      <% if flash[:error] %>
+        <div class="error"><%= h(flash[:error]) -%></div>
+      <% end %>
+      <% if flash[:success] %>
+        <div class="success"><%= h(flash[:success]) -%></div>
+      <% end %>
+      <%= yield %>
+    </div>
+
+    <div class="span-6 last" id="sidebar">
+      <div id="recent-books">
+        <h3 class="caps">Sidebar</h3>
+        <div class="box">
+          <%= render :partial => 'pages/sidebar' %>
+        </div>
+      </div>
+    </div>
+
+<%= render :partial => 'layouts/footer' %>

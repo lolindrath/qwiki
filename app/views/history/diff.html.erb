@@ -1,0 +1,24 @@
+
+<p>Diff between v1 = <%= @v1_num -%> and v2 = <%= @v2_num -%></p>
+
+<div style="display: none;" id="v1"><%= @v1 %></div>
+<div style="display: none;" id="v2"><%= @v2 %></div>
+
+<div class="wikistyle" id="diff"></div>
+
+<SCRIPT TYPE="text/javascript" LANGUAGE="JavaScript">
+var dmp = new diff_match_patch();
+
+//function launch() {
+  var text1 = $('v1').innerHTML;
+  var text2 = $('v2').innerHTML;
+
+  var d = dmp.diff_main(text1, text2);
+
+  dmp.diff_cleanupSemantic(d);
+  //dmp.diff_cleanupEfficiency(d);
+  
+  var ds = dmp.diff_prettyHtml(d);
+  document.getElementById('diff').innerHTML = ds;
+//}
+</SCRIPT>

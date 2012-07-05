@@ -1,0 +1,14 @@
+<%= render :partial => 'layouts/header' %>
+    <div class="span-23 colborder" id="content">
+      <% if flash[:notice] %>
+        <div class="notice"><%= h(flash[:notice]) -%></div>
+      <% end %>
+      <% if flash[:error] %>
+        <div class="error"><%= h(flash[:error]) -%></div>
+      <% end %>
+      <% if flash[:success] %>
+        <div class="success"><%= h(flash[:success]) -%></div>
+      <% end %>
+      <%= yield %>
+    </div>
+<%= render :partial => 'layouts/footer' %>

@@ -1,0 +1,22 @@
+# == Schema Information
+#
+# Table name: pages
+#
+#  id           :integer         not null, primary key
+#  name         :string(255)
+#  body         :text
+#  user_id      :integer
+#  edit_summary :string(255)
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  body: MyText
+
+two:
+  name: MyString
+  body: MyText
