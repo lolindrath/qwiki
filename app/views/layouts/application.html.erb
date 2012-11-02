@@ -1,24 +1,36 @@
 <%= render :partial => 'layouts/header' %>
-    <div class="span-17 colborder" id="content">
+
+    <div class="container">
+		<div class="row">&nbsp;</div>
+		<div class="row">
+			<div class="span3"></div>
+			<div class="span5">
       <% if flash[:notice] %>
-        <div class="notice"><%= h(flash[:notice]) -%></div>
+		<div class="alert alert-info">
+			<button type="button" class="close" data-dismiss="alert">×</button><%= h(flash[:notice]) %>
+		</div>
       <% end %>
       <% if flash[:error] %>
-        <div class="error"><%= h(flash[:error]) -%></div>
+		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">×</button><%= h(flash[:error]) %>
+		</div>
       <% end %>
       <% if flash[:success] %>
-        <div class="success"><%= h(flash[:success]) -%></div>
+		<div class="alert alert-success">
+			<button type="button" class="close" data-dismiss="alert">×</button><%= h(flash[:succcess]) %>
+		</div>
       <% end %>
-      <%= yield %>
-    </div>
+			</div>
+		</div>
 
-    <div class="span-6 last" id="sidebar">
-      <div id="recent-books">
-        <h3 class="caps">Sidebar</h3>
-        <div class="box">
-          <%= render :partial => 'pages/sidebar' %>
-        </div>
-      </div>
-    </div>
+		<div class="row">
+			<div class="span12">
+				<!-- main content -->
+				<%= yield %>
+			</div>
+		</div>
+
+
+    </div> <!-- /container -->
 
 <%= render :partial => 'layouts/footer' %>
